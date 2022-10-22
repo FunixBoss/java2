@@ -1,15 +1,21 @@
 package entity;
 
-public class Categories extends Entity {
+public class Category extends Entity {
 	private String name;
 	private String imageIcon;
 	private Integer parentId;
 
-	public Categories() {
+	public Category() {
 		super();
 	}
 
-	public Categories(Integer id, String name, String imageIcon, int parentId) {
+	public Category(String name, String imageIcon, Integer parentId) {
+		this.name = name;
+		this.imageIcon = imageIcon;
+		this.parentId = parentId;
+	}
+
+	public Category(Integer id, String name, String imageIcon, Integer parentId) {
 		super(id);
 		this.name = name;
 		this.imageIcon = imageIcon;
@@ -32,11 +38,11 @@ public class Categories extends Entity {
 		this.imageIcon = imageIcon;
 	}
 
-	public int getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(int parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 
@@ -44,6 +50,5 @@ public class Categories extends Entity {
 	public String toString() {
 		return "Categories [id=" + id + ", name=" + name + ", imageIcon=" + imageIcon + ", parentId=" + parentId + "]";
 	}
-
 
 }

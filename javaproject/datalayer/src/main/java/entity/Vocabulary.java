@@ -2,10 +2,9 @@ package entity;
 
 public class Vocabulary extends Entity {
 	private String word;
-	private String pronunciation;
 	private String image;
+	private String pronunciation;
 
-	private Integer wordMeaningId;
 	private Integer exampleId;
 	private Integer categoryId;
 	private Integer wordTypeId;
@@ -14,23 +13,21 @@ public class Vocabulary extends Entity {
 		super();
 	}
 
-	public Vocabulary(String word, String pronunciation, String image, Integer wordMeaningId,
+	public Vocabulary(String word, String image, String pronunciation,
 			Integer exampleId, Integer categoryId, Integer wordTypeId) {
 		this.word = word;
 		this.pronunciation = pronunciation;
 		this.image = image;
-		this.wordMeaningId = wordMeaningId;
 		this.exampleId = exampleId;
 		this.categoryId = categoryId;
 		this.wordTypeId = wordTypeId;
 	}
-	public Vocabulary(Integer id, String word, String pronunciation, String image, Integer wordMeaningId,
+	public Vocabulary(Integer id, String word, String image, String pronunciation,
 			Integer exampleId, Integer categoryId, Integer wordTypeId) {
 		super(id);
 		this.word = word;
 		this.pronunciation = pronunciation;
 		this.image = image;
-		this.wordMeaningId = wordMeaningId;
 		this.exampleId = exampleId;
 		this.categoryId = categoryId;
 		this.wordTypeId = wordTypeId;
@@ -60,14 +57,6 @@ public class Vocabulary extends Entity {
 		this.image = image;
 	}
 
-	public Integer getWordMeaningId() {
-		return wordMeaningId;
-	}
-
-	public void setWordMeaningId(Integer wordMeaningId) {
-		this.wordMeaningId = wordMeaningId;
-	}
-
 	public Integer getExampleId() {
 		return exampleId;
 	}
@@ -94,8 +83,8 @@ public class Vocabulary extends Entity {
 
 	@Override
 	public String toString() {
-		return "Vocabulary [id=" + id + ", word=" + word + ", pronunciation=" + pronunciation + ", image=" + image
-				+ ", wordMeaningId=" + wordMeaningId + ", exampleId=" + exampleId + ", categoryId=" + categoryId
+		return "Vocabulary [id=" + id + ", word=" + word + ", image=" + image + ", pronunciation=" + pronunciation 
+				+ ", exampleId=" + exampleId + ", categoryId=" + categoryId
 				+ ", wordTypeId=" + wordTypeId + "]";
 	}
 }

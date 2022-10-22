@@ -8,7 +8,7 @@ import java.util.List;
 
 import database.ConnectDBFromProperties;
 import entity.User;
-import idao.UserDAO;
+import iservice.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
 //	fields
@@ -23,10 +23,6 @@ public class UserDAOImpl implements UserDAO {
 
 	public List<User> getList() {
 		return list;
-	}
-
-	public void setList(List<User> list) {
-		this.list = list;
 	}
 
 	@Override
@@ -75,17 +71,15 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	/**
-	 *  @return null if doesn't have anyone
+	 *  @return null if doesn't have any
 	 */
 	public List<User> selectAll() {
-		List<User> list = null;
+		List<User> list = new ArrayList<>();;
 
 		try (var con = ConnectDBFromProperties.getConnectionFromClassPath();
 				var cs = con.prepareCall("{call selAllUser}");
 				var rs = cs.executeQuery();) {
 			while (rs.next()) {
-				list = new ArrayList<>();
-				var user = new User();
 				Integer id = rs.getInt(1);
 				String email = rs.getString(2);
 
@@ -116,17 +110,16 @@ public class UserDAOImpl implements UserDAO {
 			System.err.println("Get list of user failed!");
 		}
 
-		return list;
+		return list.isEmpty() ? null : list;
 	}
 
 	@Override
 	/**
-	 * @param User Entity
 	 * @return 0 for insert failed
 	 * @return 1 for insert successfully
 	 */
-	public int insert(User user) {
-		int result = 0;
+	public Integer insert(User user) {
+		Integer result = 0;
 		try (var con = ConnectDBFromProperties.getConnectionFromClassPath();
 				var cs = con.prepareCall("{call insertUser(?, ?, ?, ?, ?, ?)}");) {
 			// must be validate before insert
@@ -148,17 +141,25 @@ public class UserDAOImpl implements UserDAO {
 
 		return result;
 	}
+	
+	
+	@Override
+	/*
+	 * do not need
+	 */
+	public Integer update(User user) {
+		return 0;
+	}
 
 	@Override
 	/**
-	 * @param User Entity
 	 * @return 0 for update private info failed
 	 * @return 1 for update private info successfully
 	 */
-	public int updatePrivateInfoUser(User user) {
-		int result = 0;
+	public Integer updatePrivateInfoUser(User user) {
+		Integer result = 0;
 		try (var con = ConnectDBFromProperties.getConnectionFromClassPath();
-				var cs = con.prepareCall("{call UpdatePrivateInfoUser(?, ?, ?, ?)}");) {
+				var cs = con.prepareCall("{call updatePrivateInfoUser(?, ?, ?, ?)}");) {
 			cs.setInt(1, user.getId());
 			cs.setString(2, user.getFullname());
 			cs.setDate(3, Date.valueOf(user.getDateOfBirth()));
@@ -174,14 +175,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	/**
-	 * @param User Entity
 	 * @return 0 for update private info failed
 	 * @return 1 for update private info successfully
 	 */
-	public int updatePassword(User user) {
-		int result = 0;
+	public Integer updatePassword(User user) {
+		Integer result = 0;
 		try (var con = ConnectDBFromProperties.getConnectionFromClassPath();
-				var cs = con.prepareCall("{call UpdatePasswordInfoUser(?, ?)}");) {
+				var cs = con.prepareCall("{call updatePasswordInfoUser(?, ?)}");) {
 			cs.setInt(1, user.getId());
 			cs.setString(2, user.getPassword());
 			result = cs.executeUpdate();
@@ -197,11 +197,11 @@ public class UserDAOImpl implements UserDAO {
 	 * @return 1 if success
 	 * @return 0 if failed
 	 */
-	public int delete(User user) {
-		int result = 0;
+	public Integer delete(User user) {
+		Integer result = 0;
 		try(
 			var con = ConnectDBFromProperties.getConnectionFromClassPath();
-			var cs = con.prepareCall("{call delUser(?)}");
+			var cs = con.prepareCall("{call deleteUser(?)}");
 		){
 			cs.setInt(1, user.getId());
 			result = cs.executeUpdate();

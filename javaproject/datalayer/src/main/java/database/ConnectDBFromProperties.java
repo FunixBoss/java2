@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class ConnectDBFromProperties {
-	public static String getConnectionURLFromClassPath(){
+	private static String getConnectionURLFromClassPath(){
 		String strCon = null;
 		
 		try(

@@ -1,11 +1,9 @@
 package test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.UserDAOImpl;
-import database.ConnectDBFromProperties;
 import entity.User;
 
 public class TestUserDAOImpl {

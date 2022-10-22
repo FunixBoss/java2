@@ -1,4 +1,4 @@
-package idao;
+package iservice;
 
 import entity.Vocabulary;
 
