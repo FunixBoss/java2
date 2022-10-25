@@ -1,11 +1,11 @@
-package test;
+package dao;
 
 import java.util.List;
 
-import dao.MeaningDAOImpl;
+import dao.impl.MeaningDAOImpl;
 import entity.Meaning;
-import iservice.DAO;
-import iservice.MeaningDAO;
+import dao.DAO;
+import dao.MeaningDAO;
 
 public class TestMeaningImpl implements MeaningDAO {
 	public static void main(String[] args) {

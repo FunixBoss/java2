@@ -1,4 +1,4 @@
-package dao;
+package dao.impl;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import database.ConnectDBFromProperties;
 import entity.User;
-import iservice.UserDAO;
+import dao.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
 //	fields

@@ -1,9 +1,9 @@
 
-package test;
+package dao;
 
 import java.util.List;
 
-import dao.VocabularyDAOImpl;
+import dao.impl.VocabularyDAOImpl;
 import entity.Vocabulary;
 
 public class TestVocabDAOImpl {

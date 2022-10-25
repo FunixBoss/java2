@@ -1,4 +1,4 @@
-package iservice;
+package dao;
 
 import entity.WordType;
 

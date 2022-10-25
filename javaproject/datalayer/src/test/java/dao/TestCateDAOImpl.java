@@ -1,10 +1,10 @@
-package test;
+package dao;
 
 import java.util.List;
 
-import dao.CategoryDAOImpl;
+import dao.impl.CategoryDAOImpl;
 import entity.Category;
-import iservice.CategoryDAO;
+import dao.CategoryDAO;
 
 public class TestCateDAOImpl implements CategoryDAO{
 	public static void main(String[] args) {

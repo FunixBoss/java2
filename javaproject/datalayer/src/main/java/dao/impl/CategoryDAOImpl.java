@@ -1,4 +1,4 @@
-package dao;
+package dao.impl;
 
 import java.sql.Types;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import database.ConnectDBFromProperties;
 import entity.Category;
-import iservice.CategoryDAO;
+import dao.CategoryDAO;
 
 public class CategoryDAOImpl implements CategoryDAO {
 	private List<Category> list;

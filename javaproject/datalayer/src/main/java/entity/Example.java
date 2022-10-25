@@ -1,13 +1,13 @@
 package entity;
 
-public class ExampleSentences extends Entity {
+public class Example extends Entity {
 	private String content;
 
-	public ExampleSentences() {
+	public Example() {
 		super();
 	}
 
-	public ExampleSentences(Integer id, String content) {
+	public Example(Integer id, String content) {
 		super(id);
 		this.content = content;
 	}
@@ -22,7 +22,7 @@ public class ExampleSentences extends Entity {
 
 	@Override
 	public String toString() {
-		return "ExampleSentences [id=" + id + ", content=" + content + "]";
+		return "Example [id=" + id + ", content=" + content + "]";
 	}
 
 }
