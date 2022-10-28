@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class JFVocab extends JFrame {
+public class JFTopic extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFieldSearch;
@@ -48,7 +48,7 @@ public class JFVocab extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JFVocab frame = new JFVocab();
+					JFTopic frame = new JFTopic();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +60,7 @@ public class JFVocab extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JFVocab() {
+	public JFTopic() {
 		setTitle("Member");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFDashboard.class.getResource("/image/dictionary-icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,8 +80,7 @@ public class JFVocab extends JFrame {
 		panel.setLayout(null);
 		
 		JPanel panelVocab = new JPanel();
-		panelVocab.setForeground(new Color(255, 255, 255));
-		panelVocab.setBackground(new Color(37, 57, 111));
+		panelVocab.setBackground(new Color(255, 255, 255));
 		panelVocab.setBounds(0, 137, 217, 70);
 		panel.add(panelVocab);
 		panelVocab.setLayout(null);
@@ -95,19 +94,19 @@ public class JFVocab extends JFrame {
 		
 		JLabel lblVocab = new JLabel("Từ vựng");
 		lblVocab.setFont(new Font("Arial", Font.BOLD, 16));
-		lblVocab.setForeground(new Color(255, 255, 255));
+		lblVocab.setForeground(new Color(37, 57, 143));
 		lblVocab.setBounds(78, 25, 94, 20);
 		panelVocab.add(lblVocab);
 		
 		JPanel panelTopic = new JPanel();
 		panelTopic.setForeground(new Color(255, 255, 255));
-		panelTopic.setBackground(new Color(255, 255, 255));
+		panelTopic.setBackground(new Color(37, 57, 111));
 		panelTopic.setBounds(0, 207, 217, 70);
 		panel.add(panelTopic);
 		panelTopic.setLayout(null);
 		
 		JLabel lblTopic = new JLabel("Chủ đề");
-		lblTopic.setForeground(new Color(37, 57, 111));
+		lblTopic.setForeground(new Color(255, 255, 255));
 		lblTopic.setFont(new Font("Arial", Font.BOLD, 16));
 		lblTopic.setBounds(78, 25, 87, 19);
 		panelTopic.add(lblTopic);
@@ -175,15 +174,15 @@ public class JFVocab extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblDashboard = new JLabel("Từ vựng");
+		JLabel lblDashboard = new JLabel("Chủ đề");
 		lblDashboard.setForeground(new Color(37, 57, 111));
 		lblDashboard.setFont(new Font("Arial", Font.BOLD, 20));
 		lblDashboard.setBounds(47, 78, 134, 39);
 		panel_2.add(lblDashboard);
 		
-		JLabel lblBreadcrumb = new JLabel("Trang chủ / Từ vựng");
+		JLabel lblBreadcrumb = new JLabel("Trang chủ / Chủ đề");
 		lblBreadcrumb.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblBreadcrumb.setBounds(909, 93, 134, 14);
+		lblBreadcrumb.setBounds(908, 88, 134, 14);
 		panel_2.add(lblBreadcrumb);
 		
 		lblStatusPage = new JLabel("Trang 1 of 0");
@@ -286,7 +285,7 @@ public class JFVocab extends JFrame {
 		textField.setBounds(49, 128, 273, 36);
 		panel_2.add(textField);
 		
-		JButton btnAdd = new JButton("Thêm từ vựng");
+		JButton btnAdd = new JButton("Thêm chủ đề");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				do_btnAdd_actionPerformed(e);

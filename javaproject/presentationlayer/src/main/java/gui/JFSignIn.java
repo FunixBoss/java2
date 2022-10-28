@@ -31,21 +31,7 @@ public class JFSignIn extends javax.swing.JFrame {
 	private JTextField textFieldUsername;
 	private JTextField textFieldPassword;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JFSignIn frame = new JFSignIn();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.

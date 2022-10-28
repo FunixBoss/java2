@@ -18,6 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import internal.IFAddMember;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -34,8 +37,7 @@ public class JFMember extends JFrame {
 	private Image searchImg = new ImageIcon(getClass().getResource("/image/search.png")).getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
 	private Image avatarImg = new ImageIcon(getClass().getResource("/image/avatar.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 	private JLabel lblStatusPage;
-	private JLabel lblRowCount;
-	
+	private JLabel lblRowCount;	
 	Integer pageNumber = 1;
 	Integer rowsOfPage = 10;
 	Integer totalOfRows = 0; // tổng số row trong table 
@@ -65,7 +67,7 @@ public class JFMember extends JFrame {
 		setTitle("Member");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFDashboard.class.getResource("/image/dictionary-icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1110, 816);
+		setBounds(100, 100, 1318, 816);
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -82,161 +84,186 @@ public class JFMember extends JFrame {
 		
 		JPanel panelVocab = new JPanel();
 		panelVocab.setBackground(new Color(255, 255, 255));
-		panelVocab.setBounds(0, 175, 217, 50);
+		panelVocab.setBounds(0, 137, 217, 70);
 		panel.add(panelVocab);
 		panelVocab.setLayout(null);
 		
 		JLabel lblIconVocab = new JLabel("");
 		lblIconVocab.setBackground(new Color(255, 255, 255));
 		lblIconVocab.setForeground(new Color(255, 255, 255));
-		lblIconVocab.setBounds(30, 8, 29, 31);
+		lblIconVocab.setBounds(30, 16, 29, 31);
 		panelVocab.add(lblIconVocab);
 		lblIconVocab.setIcon(new ImageIcon(vocabImg));
 		
 		JLabel lblVocab = new JLabel("Từ vựng");
 		lblVocab.setFont(new Font("Arial", Font.BOLD, 16));
 		lblVocab.setForeground(new Color(37, 57, 143));
-		lblVocab.setBounds(78, 11, 94, 20);
+		lblVocab.setBounds(78, 25, 94, 20);
 		panelVocab.add(lblVocab);
 		
 		JPanel panelTopic = new JPanel();
 		panelTopic.setBackground(new Color(255, 255, 255));
-		panelTopic.setBounds(0, 226, 217, 50);
+		panelTopic.setBounds(0, 207, 217, 70);
 		panel.add(panelTopic);
 		panelTopic.setLayout(null);
 		
 		JLabel lblTopic = new JLabel("Chủ đề");
 		lblTopic.setForeground(new Color(37, 57, 143));
 		lblTopic.setFont(new Font("Arial", Font.BOLD, 16));
-		lblTopic.setBounds(78, 11, 87, 19);
+		lblTopic.setBounds(78, 25, 87, 19);
 		panelTopic.add(lblTopic);
 		
 		JLabel lblIconTopic = new JLabel("");
-		lblIconTopic.setBounds(30, 8, 26, 28);
+		lblIconTopic.setBounds(30, 16, 26, 28);
 		panelTopic.add(lblIconTopic);
 		lblIconTopic.setIcon(new ImageIcon(topicImg));
 		
 		JPanel panelMember = new JPanel();
-		panelMember.setBackground(new Color(255, 255, 255));
-		panelMember.setBounds(0, 277, 217, 50);
+		panelMember.setBackground(new Color(37, 57, 111));
+		panelMember.setBounds(0, 277, 217, 70);
 		panel.add(panelMember);
 		panelMember.setLayout(null);
 		
 		JLabel lblMember = new JLabel("Thành viên");
-		lblMember.setBounds(78, 11, 87, 19);
+		lblMember.setBounds(75, 25, 87, 19);
 		panelMember.add(lblMember);
-		lblMember.setForeground(new Color(37, 57, 143));
+		lblMember.setForeground(new Color(255, 255, 255));
 		lblMember.setFont(new Font("Arial", Font.BOLD, 16));
 		
 		JLabel lblIconMember = new JLabel("");
-		lblIconMember.setBounds(30, 8, 35, 28);
+		lblIconMember.setBounds(30, 16, 35, 28);
 		panelMember.add(lblIconMember);
 		lblIconMember.setIcon(new ImageIcon(memberImg));
 		
 		JPanel panelAdmin = new JPanel();
 		panelAdmin.setBackground(new Color(255, 255, 255));
-		panelAdmin.setBounds(0, 328, 217, 50);
+		panelAdmin.setBounds(0, 346, 217, 70);
 		panel.add(panelAdmin);
 		panelAdmin.setLayout(null);
 		
 		JLabel lblAdmin = new JLabel("Quản trị viên");
 		lblAdmin.setForeground(new Color(37, 57, 143));
 		lblAdmin.setFont(new Font("Arial", Font.BOLD, 16));
-		lblAdmin.setBounds(78, 11, 128, 19);
+		lblAdmin.setBounds(78, 25, 128, 19);
 		panelAdmin.add(lblAdmin);
 		
 		JLabel lblIconAdmin = new JLabel("");
-		lblIconAdmin.setBounds(30, 8, 46, 24);
+		lblIconAdmin.setBounds(30, 16, 46, 24);
 		panelAdmin.add(lblIconAdmin);
 		lblIconAdmin.setIcon(new ImageIcon(adminImg));
 		
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBackground(new Color(255, 255, 255));
 		panelLogo.setLayout(null);
-		panelLogo.setBounds(0, 0, 217, 61);
+		panelLogo.setBounds(0, 0, 217, 78);
 		panel.add(panelLogo);
 		
 		JLabel lblLogo = new JLabel("EV Dictionary");
 		lblLogo.setForeground(new Color(37, 57, 111));
 		lblLogo.setFont(new Font("Arial", Font.BOLD, 20));
-		lblLogo.setBounds(70, 11, 134, 39);
+		lblLogo.setBounds(73, 16, 134, 39);
 		panelLogo.add(lblLogo);
 		
 		JLabel lblIconLogo = new JLabel("");
-		lblIconLogo.setBounds(12, 5, 55, 50);
+		lblIconLogo.setBounds(20, 11, 55, 50);
 		panelLogo.add(lblIconLogo);
 		lblIconLogo.setBackground(new Color(0, 0, 0));
 		lblIconLogo.setIcon(new ImageIcon(logoImg));
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(242, 247, 255));
-		panel_2.setBounds(217, 0, 877, 777);
+		panel_2.setBounds(217, 77, 1085, 699);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblDashboard = new JLabel("Thành viên");
 		lblDashboard.setForeground(new Color(37, 57, 111));
 		lblDashboard.setFont(new Font("Arial", Font.BOLD, 20));
-		lblDashboard.setBounds(49, 85, 134, 39);
+		lblDashboard.setBounds(43, 11, 134, 39);
 		panel_2.add(lblDashboard);
 		
 		JLabel lblBreadcrumb = new JLabel("Trang chủ / Thành viên");
-		lblBreadcrumb.setBounds(701, 100, 134, 14);
+		lblBreadcrumb.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblBreadcrumb.setBounds(904, 21, 134, 14);
 		panel_2.add(lblBreadcrumb);
 		
 		lblStatusPage = new JLabel("Trang 1 of 0");
-		lblStatusPage.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblStatusPage.setBounds(91, 714, 104, 39);
+		lblStatusPage.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblStatusPage.setBounds(226, 642, 76, 39);
 		panel_2.add(lblStatusPage);
 		
 		lblRowCount = new JLabel("Số dòng: 0");
 		lblRowCount.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblRowCount.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblRowCount.setBounds(687, 720, 104, 27);
+		lblRowCount.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblRowCount.setBounds(769, 642, 104, 27);
 		panel_2.add(lblRowCount);
 		
 		JButton btnFirst = new JButton("Trang đầu");
 		btnFirst.setForeground(new Color(255, 255, 255));
 		btnFirst.setFont(new Font("Arial", Font.BOLD, 12));
 		btnFirst.setBackground(new Color(67, 98, 190));
-		btnFirst.setBounds(47, 658, 121, 40);
+		btnFirst.setBounds(115, 591, 121, 40);
 		panel_2.add(btnFirst);
 		
 		JButton btnLast = new JButton("Trang cuối");
 		btnLast.setForeground(new Color(255, 255, 255));
 		btnLast.setFont(new Font("Arial", Font.BOLD, 12));
 		btnLast.setBackground(new Color(67, 98, 190));
-		btnLast.setBounds(714, 658, 121, 40);
+		btnLast.setBounds(853, 591, 121, 40);
 		panel_2.add(btnLast);
 		
 		JButton btnPrevious = new JButton("Trang trước");
 		btnPrevious.setForeground(new Color(255, 255, 255));
 		btnPrevious.setFont(new Font("Arial", Font.BOLD, 12));
 		btnPrevious.setBackground(new Color(67, 98, 190));
-		btnPrevious.setBounds(189, 658, 121, 40);
+		btnPrevious.setBounds(275, 591, 121, 40);
 		panel_2.add(btnPrevious);
 		
 		JButton btnNext = new JButton("Trang sau");
 		btnNext.setForeground(new Color(255, 255, 255));
 		btnNext.setFont(new Font("Arial", Font.BOLD, 12));
 		btnNext.setBackground(new Color(67, 98, 190));
-		btnNext.setBounds(572, 658, 121, 40);
+		btnNext.setBounds(693, 591, 121, 40);
 		panel_2.add(btnNext);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setFont(new Font("Arial", Font.BOLD, 12));
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"10", "20", "50"}));
-		comboBox_1.setBounds(331, 658, 220, 40);
+		comboBox_1.setBounds(435, 591, 220, 40);
 		panel_2.add(comboBox_1);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setForeground(new Color(0, 0, 0));
+		scrollPane.setBorder(null);
+		scrollPane.setBackground(new Color(255, 255, 255));
+		scrollPane.setBounds(43, 120, 995, 448);
+		panel_2.add(scrollPane);
+		
 		textField = new JTextField();
-		textField.setBounds(259, 720, 384, 39);
-		panel_2.add(textField);
+		textField.setMargin(new Insets(2, 6, 2, 2));
+		textField.setHorizontalAlignment(SwingConstants.LEFT);
+		textField.setFont(new Font("Arial", Font.PLAIN, 14));
 		textField.setColumns(10);
+		textField.setBorder(null);
+		textField.setBounds(45, 61, 273, 36);
+		panel_2.add(textField);
+		
+		JButton btnAdd = new JButton("Thêm thành viên");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnAdd_actionPerformed(e);
+			}
+		});
+		btnAdd.setForeground(new Color(255, 255, 255));
+		btnAdd.setFont(new Font("Arial", Font.BOLD, 14));
+		btnAdd.setBorder(null);
+		btnAdd.setBackground(new Color(67, 98, 190));
+		btnAdd.setBounds(891, 61, 147, 36);
+		panel_2.add(btnAdd);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 877, 62);
-		panel_2.add(panel_1);
+		panel_1.setBounds(217, 0, 1085, 77);
+		contentPane.add(panel_1);
 		panel_1.setBackground(new Color(242, 247, 255));
 		panel_1.setLayout(null);
 		
@@ -249,7 +276,7 @@ public class JFMember extends JFrame {
 				do_btnNewButton_actionPerformed(e);
 			}
 		});
-		btnNewButton.setBounds(305, 11, 38, 36);
+		btnNewButton.setBounds(330, 16, 38, 36);
 		panel_1.add(btnNewButton);
 		
 		txtFieldSearch = new JTextField();
@@ -257,29 +284,27 @@ public class JFMember extends JFrame {
 		txtFieldSearch.setHorizontalAlignment(SwingConstants.LEFT);
 		txtFieldSearch.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtFieldSearch.setBorder(null);
-		txtFieldSearch.setBounds(20, 11, 273, 36);
+		txtFieldSearch.setBounds(47, 16, 273, 36);
 		panel_1.add(txtFieldSearch);
 		txtFieldSearch.setColumns(10);
 		
 		JLabel lblIconAvatar = new JLabel("");
-		lblIconAvatar.setBounds(644, 11, 31, 36);
+		lblIconAvatar.setBounds(836, 15, 31, 36);
 		panel_1.add(lblIconAvatar);
 		lblIconAvatar.setIcon(new ImageIcon(avatarImg));
 		
 		JLabel lblAvatar = new JLabel("Nguyễn Khánh Hoàng Ân");
+		lblAvatar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAvatar.setForeground(new Color(37, 57, 111));
 		lblAvatar.setFont(new Font("Arial", Font.BOLD, 13));
-		lblAvatar.setBounds(685, 18, 170, 25);
+		lblAvatar.setBounds(873, 25, 170, 25);
 		panel_1.add(lblAvatar);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setForeground(new Color(0, 0, 0));
-		scrollPane.setBorder(null);
-		scrollPane.setBackground(new Color(255, 255, 255));
-		scrollPane.setBounds(47, 135, 788, 500);
-		panel_2.add(scrollPane);
 		
 	}
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
+	}
+	protected void do_btnAdd_actionPerformed(ActionEvent e) {
+		IFAddMember member = new IFAddMember();
+		member.setVisible(true);
 	}
 }
