@@ -2,16 +2,21 @@ package entity;
 
 public class VocabularyExample extends Entity {
 	private Integer vocabularyId;
-	private Integer exampleSentenceId;
+	private Integer exampleId;
 
 	public VocabularyExample() {
 		super();
 	}
 
-	public VocabularyExample(Integer id, Integer vocabularyId, Integer exampleSentenceId) {
+	public VocabularyExample(Integer vocabularyId, Integer exampleId) {
+		this.vocabularyId = vocabularyId;
+		this.exampleId = exampleId;
+	}
+	
+	public VocabularyExample(Integer id, Integer vocabularyId, Integer exampleId) {
 		super(id);
 		this.vocabularyId = vocabularyId;
-		this.exampleSentenceId = exampleSentenceId;
+		this.exampleId = exampleId;
 	}
 
 	public Integer getVocabularyId() {
@@ -22,18 +27,18 @@ public class VocabularyExample extends Entity {
 		this.vocabularyId = vocabularyId;
 	}
 
-	public Integer getExampleSentenceId() {
-		return exampleSentenceId;
+	public Integer getexampleId() {
+		return exampleId;
 	}
 
-	public void setExampleSentenceId(Integer exampleSentenceId) {
-		this.exampleSentenceId = exampleSentenceId;
+	public void setexampleId(Integer exampleId) {
+		this.exampleId = exampleId;
 	}
 
 	@Override
 	public String toString() {
-		return "VocabularyExample [id=" + id + ", vocabularyId=" + vocabularyId + ", exampleSentenceId="
-				+ exampleSentenceId + "]";
+		return "VocabularyExample [id=" + id + ", vocabularyId=" + vocabularyId + ", exampleId="
+				+ exampleId + "]";
 	}
 
 }

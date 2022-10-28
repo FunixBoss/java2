@@ -1,12 +1,11 @@
-package dao;
+package dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import database.ConnectDBFromProperties;
-import entity.Meaning;
 import entity.Relatives;
-import iservice.RelativesDAO;
+import dao.RelativesDAO;
 
 public class RelativesDAOImpl implements RelativesDAO {
 	private List<Relatives> list;

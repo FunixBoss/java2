@@ -1,10 +1,10 @@
-package test;
+package dao;
 
 import java.util.List;
 
-import dao.RelativesDAOImpl;
+import dao.impl.RelativesDAOImpl;
 import entity.Relatives;
-import iservice.RelativesDAO;
+import dao.RelativesDAO;
 
 public class TestRelativesDAOImpl implements RelativesDAO {
 	public static void main(String[] args) {

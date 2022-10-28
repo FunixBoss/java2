@@ -1,9 +1,9 @@
-package test;
+package dao;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import dao.UserDAOImpl;
+import dao.impl.UserDAOImpl;
 import entity.User;
 
 public class TestUserDAOImpl {
